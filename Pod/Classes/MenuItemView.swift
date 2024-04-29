@@ -28,7 +28,7 @@ open class MenuItemView: UIView {
             if case .roundRect = menuOptions.focusMode {
                 backgroundColor = UIColor.clear
             } else {
-                backgroundColor = isSelected ? menuOptions.selectedBackgroundColor : menuOptions.backgroundColor
+                backgroundColor = UIColor.clear //isSelected ? menuOptions.selectedBackgroundColor : menuOptions.backgroundColor
             }
             
             switch menuItemOptions.displayMode {
@@ -327,3 +327,4 @@ extension MenuItemView {
         return UIApplication.shared.keyWindow?.bounds.width ?? UIScreen.main.bounds.width
     }
 }
+
