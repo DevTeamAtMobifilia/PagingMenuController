@@ -279,7 +279,7 @@ open class MenuView: UIScrollView {
         guard case let .underline(height, color, horizontalPadding, verticalPadding) = menuOptions.focusMode else { return }
         
         let width = menuItemViews[currentPage].bounds.width - horizontalPadding * 2
-        underlineView.frame = CGRect(x: horizontalPadding, y: menuOptions.height - (height + verticalPadding), width: width, height: height)
+        underlineView.frame = CGRect(x: horizontalPadding, y: menuOptions.height - (height + verticalPadding) + 2, width: 6, height: 3)
         underlineView.backgroundColor = color
         contentView.addSubview(underlineView)
     }
@@ -298,8 +298,9 @@ open class MenuView: UIScrollView {
         guard case .underline(_, _, let horizontalPadding, _) = menuOptions.focusMode else { return }
         
         let targetFrame = menuItemViews[currentPage].frame
-        underlineView.frame.origin.x = targetFrame.minX + horizontalPadding
-        underlineView.frame.size.width = targetFrame.width - horizontalPadding * 2
+        underlineView.frame.origin.x = targetFrame.midX-15 //targetFrame.minX + horizontalPadding
+        underlineView.frame.size.width = 30 //targetFrame.width - horizontalPadding * 2
+        underlineView.layer.cornerRadius = 1.5
     }
     
     fileprivate func animateRoundRectViewIfNeeded() {
@@ -401,3 +402,4 @@ extension MenuView {
         return (startIndex + page + menuItemCount) % menuItemCount
     }
 }
+
